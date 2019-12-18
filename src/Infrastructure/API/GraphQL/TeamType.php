@@ -22,7 +22,7 @@ class TeamType extends ObjectType
                         'type' => Type::nonNull(Type::string())
                     ],
                     'created_at' => [
-                        'type' => Type::nonNull(Type::string())
+                        'type' => Type::nonNull(DateTimeType::getInstance())
                     ],
                     'contact' => [
                         'type' => ContactType::getInstance()

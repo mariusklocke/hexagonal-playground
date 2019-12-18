@@ -24,10 +24,10 @@ class MatchDayType extends ObjectType
                         'type' => Type::nonNull(Type::int())
                     ],
                     'start_date' => [
-                        'type' => Type::nonNull(Type::string())
+                        'type' => Type::nonNull(DateType::getInstance())
                     ],
                     'end_date' => [
-                        'type' => Type::nonNull(Type::string())
+                        'type' => Type::nonNull(DateType::getInstance())
                     ],
                     'matches' => [
                         'type' => Type::listOf(MatchType::getInstance()),

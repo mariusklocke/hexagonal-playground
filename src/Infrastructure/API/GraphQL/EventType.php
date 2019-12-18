@@ -18,7 +18,7 @@ class EventType extends ObjectType
                         'type' => Type::nonNull(Type::string())
                     ],
                     'occurred_at' => [
-                        'type' => Type::nonNull(Type::string())
+                        'type' => Type::nonNull(DateTimeType::getInstance())
                     ],
                     'type' => [
                         'type' => Type::nonNull(Type::string())

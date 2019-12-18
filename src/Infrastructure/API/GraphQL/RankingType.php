@@ -16,7 +16,7 @@ class RankingType extends ObjectType
             'fields' => function() {
                 return [
                     'updated_at' => [
-                        'type' => Type::string()
+                        'type' => DateTimeType::getInstance()
                     ],
                     'positions' => [
                         'type' => Type::listOf(RankingPositionType::getInstance())
