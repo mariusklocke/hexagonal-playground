@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace HexagonalPlayground\Infrastructure\Persistence\Read;
 
 use DI;
+use HexagonalPlayground\Application\ServiceConfiguratorInterface;
 use HexagonalPlayground\Application\ServiceProviderInterface;
 use HexagonalPlayground\Infrastructure\HealthCheckInterface;
 use HexagonalPlayground\Infrastructure\Persistence\QueryLogger;
@@ -34,7 +35,9 @@ class ReadRepositoryProvider implements ServiceProviderInterface
 
             QueryLogger::class => DI\autowire(),
 
-            __NAMESPACE__ . '\*Repository' => DI\autowire()
+            __NAMESPACE__ . '\*Repository' => DI\autowire(),
+
+            ServiceConfiguratorInterface::class => DI\add(DI\get(MysqliConfigurator::class))
         ];
     }
 }

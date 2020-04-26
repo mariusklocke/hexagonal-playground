@@ -7,6 +7,7 @@ use DI;
 use HexagonalPlayground\Application\Bus\HandlerResolver;
 use HexagonalPlayground\Application\EventStoreInterface;
 use HexagonalPlayground\Application\EventStoreSubscriber;
+use HexagonalPlayground\Application\ServiceConfiguratorInterface;
 use HexagonalPlayground\Application\ServiceProviderInterface;
 use HexagonalPlayground\Domain\Event\Publisher;
 use HexagonalPlayground\Infrastructure\Environment;
@@ -41,11 +42,7 @@ class EventServiceProvider implements ServiceProviderInterface
 
             EventStoreInterface::class => DI\get(DoctrineEventStore::class),
 
-            DoctrineEventStore::class => DI\autowire(),
-
-            EventStoreSubscriber::class => DI\autowire(),
-
-            RedisEventPublisher::class => DI\autowire()
+            ServiceConfiguratorInterface::class => DI\add(DI\get(RedisConfigurator::class))
         ];
     }
 }

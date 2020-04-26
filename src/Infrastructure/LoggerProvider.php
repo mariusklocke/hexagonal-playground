@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace HexagonalPlayground\Infrastructure;
 
 use DI;
+use HexagonalPlayground\Application\ServiceConfiguratorInterface;
 use HexagonalPlayground\Application\ServiceProviderInterface;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\StreamHandler;
@@ -26,7 +27,9 @@ class LoggerProvider implements ServiceProviderInterface
                 ->method('setFormatter', DI\get(LineFormatter::class)),
 
             LineFormatter::class => DI\create()
-                ->constructor("[%datetime%] %channel%.%level_name%: %message% %context%\n")
+                ->constructor("[%datetime%] %channel%.%level_name%: %message% %context%\n"),
+
+            ServiceConfiguratorInterface::class => DI\add(DI\get(LoggerConfigurator::class))
         ];
     }
 }

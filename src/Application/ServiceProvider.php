@@ -78,7 +78,8 @@ class ServiceProvider implements ServiceProviderInterface
                 UpdateTeamContactCommand::class,
                 UpdateUserCommand::class
             ],
-            HandlerResolver::class => DI\get(ContainerHandlerResolver::class)
+            HandlerResolver::class => DI\get(ContainerHandlerResolver::class),
+            ServiceConfiguratorInterface::class => []
         ];
     }
 }

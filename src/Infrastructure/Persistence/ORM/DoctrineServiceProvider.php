@@ -24,6 +24,7 @@ use HexagonalPlayground\Application\Repository\SeasonRepositoryInterface;
 use HexagonalPlayground\Application\Repository\TeamRepositoryInterface;
 use HexagonalPlayground\Application\Repository\TournamentRepositoryInterface;
 use HexagonalPlayground\Application\Security\UserRepositoryInterface;
+use HexagonalPlayground\Application\ServiceConfiguratorInterface;
 use HexagonalPlayground\Application\ServiceProviderInterface;
 use HexagonalPlayground\Infrastructure\API\Security\WebAuthn\PublicKeyCredentialSourceRepository;
 use HexagonalPlayground\Infrastructure\Environment;
@@ -133,7 +134,9 @@ class DoctrineServiceProvider implements ServiceProviderInterface
             UserRepositoryInterface::class => DI\get(UserRepository::class),
             PublicKeyCredentialSourceRepository::class => DI\get(PublicKeyCredentialRepository::class),
 
-            HealthCheckInterface::class => DI\add(DI\get(DoctrineHealthCheck::class))
+            HealthCheckInterface::class => DI\add(DI\get(DoctrineHealthCheck::class)),
+
+            ServiceConfiguratorInterface::class => DI\add(DI\get(DoctrineConfigurator::class))
         ];
     }
 }
